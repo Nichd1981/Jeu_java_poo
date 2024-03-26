@@ -1,1 +1,1 @@
-/* Petit jeu en JAVA pour aborder l'orienter object */
+/* Petit jeu en Console JAVA pour aborder l'orienter object */

@@ -10,29 +10,33 @@ public class Chevalier extends Personnages implements Pouvoir {
     public Chevalier(String nom, int pointsDeVie, int force) {
         /* Appel du constructeur de la classe mère avec les valeurs passées en paramètres
            Le mot-clé 'super' est utilisé pour appeler le constructeur de la classe mère (Personnage).
-           Ce qui est entre parenthèses sont les paramètres du constructeur de la classe mère.
+           Ce qui est entre parenthèses sont les paramètres du constructeur de la classe mère, qui sont communs.
         */
-        // Appel du constructeur de la classe mère avec les paramètres 'nom', 'pointsDeVie', 'force' et typeAttaque de l'enum
         super(nom, pointsDeVie, force, TypeAttaque.PHYSIQUE);
     }
 
-    // Méthode pour attaquer un autre personnage, implémentée à partir de la classe abstraite Personnage
+    /* Méthode pour attaquer un autre personnage, implémentée à partir de la classe abstraite Personnage.
+    L'annotation Override permet de s'assurer qu'on utilise la bonne version de la méthode.
+     */
     @Override
     public void attaquer(Personnages personnages) {
-        // Utilisation de la variable membre private pour calculer les dégâts
-        // Affiche le nom du Chevalier, la cible et le type d'attaque
+        /* Utilisation de la variable membre private pour calculer les dégâts
+         Affiche le nom du Chevalier, la cible et le type d'attaque.
+         */
         System.out.println(getNom() + " attaque " + personnages.getNom() + " avec une attaque " + typeAttaque + ".");
 
-        // Appelle la méthode 'recevoirDegats' de la classe Personnage pour infliger des dégâts à la cible
-        // 'force' est utilisé comme valeur de dégâts pour la cible
+        /* Appelle la méthode 'recevoirDegats' de la classe Personnage pour infliger des dégâts à la cible.
+         'force' est utilisé comme valeur de dégâts pour la cible
+        */
         personnages.recevoirDegats(force);
     }
 
     // Implémentation de la méthode de l'interface Pouvoir pour utiliser le pouvoir du Chevalier
     @Override
     public void utiliserPouvoir() {
-        // Action spécifique au Chevalier lors de l'utilisation de son pouvoir
-        // Affiche le nom du Chevalier et l'action spécifique de son pouvoir
+        /* Action spécifique au Chevalier lors de l'utilisation de son pouvoir.
+        // Affiche le nom du Chevalier et l'action spécifique de son pouvoir.
+         */
         System.out.println(getNom() + " utilise son bouclier.");
     }
 }

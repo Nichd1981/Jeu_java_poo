@@ -8,13 +8,13 @@ import java.util.List;
 public class JeuDeCombat {
 
     public static void main(String[] args) {
-        // Création d'instances de Chevalier et Mage avec des paramètres spécifiques
+        // On construit Chevalier et Mage en précisant dans les () des valeurs que le constructeur de Personnages impose.
         Chevalier chevalier = new Chevalier("Arthur", 100, 20);
         Mage mage = new Mage("Merlin", 80, 25);
 
 
         // Combat entre le Chevalier et le Mage
-        // Initialisation du compteur de tour à 1
+        // Initialisation du compteur de tour à 1.
         int tour = 1;
 
         // Boucle tant que les deux personnages ont des points de vie
@@ -23,10 +23,11 @@ public class JeuDeCombat {
             System.out.println("Tour " + tour + " :");
 
             // Le Chevalier attaque le Mage
-            // Appel de la méthode "attaquer" du Chevalier sur le Mage
+            // On appelle de la méthode "attaquer" du Chevalier sur le (Mage).
             chevalier.attaquer(mage);
             chevalier.utiliserPouvoir();
-            // Vérification des points de vie du Mage après l'attaque
+            // On vérifie les points de vie du Mage après l'attaque
+            // Si Mage a des pointsDeVie inférieur ou égale à 0 alors
             if (mage.pointsDeVie <= 0) {
                 // Si le Mage a 0 points de vie ou moins, affichage d'un message
                 System.out.println("Le Mage " + mage.getNom() + " est K.O.");
@@ -35,18 +36,19 @@ public class JeuDeCombat {
             }
 
             // Le Mage attaque le Chevalier
-            // Appel de la méthode "attaquer" du Mage sur le Chevalier
             mage.attaquer(chevalier);
 
-            // Vérification des points de vie du Chevalier après l'attaque
-            // Si le Chevalier, dont on reprend la caractéristique pointsDeVie venant de la class Personnage et qui est déterminé dans l'initialisation ci-dessus, est plus grand que 0 alors...
+            /* Vérification des points de vie du Chevalier après l'attaque
+             Si le Chevalier, dont on reprend la caractéristique pointsDeVie venant de la class Personnage et qui est déterminé dans
+             l'initialisation ci-dessus, est plus grandou égale à 0 alors...
+            */
             if (chevalier.pointsDeVie <= 0) {
                 // Si le Chevalier a 0 points de vie ou moins, affichage d'un message
                 System.out.println("Le Chevalier " + chevalier.getNom() + " est K.O.");
                 // Sortie de la boucle si le Chevalier est K.O.
                 break;
             }
-            // Incrémentation du compteur de tour
+            // Incrémentation du compteur de tour à la fin de la boucle while.
             tour++;
         }
 
@@ -58,7 +60,7 @@ public class JeuDeCombat {
         Pouvoir pouvoir = () -> System.out.println("Message depuis une expression lambda pour utiliser les pouvoir du Mage");
         pouvoir.utiliserPouvoir();
         // Utilisation d'un if pour vérifier les points de vie restants
-        // Si le Mage, dont on reprend la caractéristique pointsDeVie venant de la class Personnage, est plus grand que 0 alors...
+        // Si le Mage, dont on reprend la caractéristique pointsDeVie venant de la class Personnage, est plus grand ou égale à 0 alors...
         if (mage.pointsDeVie > 0) {
             // Appel de la méthode bouleDeFeu avec l'annotation Sortilege sur l'instance de Mage pour lancer la méthode.
             mage.bouleDeFeu();
@@ -91,7 +93,7 @@ public class JeuDeCombat {
         int[][] statistiques = new int[2][2];
 
         // Cette boucle s'exécute trois fois
-        // (i commence à 1; i est plus petit ou égale à 3; i +1).
+        // (i commence à 1;(si) i est plus petit ou égale à 3;(alors) i +1).
         for (int i = 1; i <= 3; i++) {
             System.out.println("-------------------------------------------------------");
             // Affichage du numéro du tour en cours
@@ -104,7 +106,7 @@ public class JeuDeCombat {
             chevalier.attaquer(mage);
             // Le mage riposte en attaquant le chevalier à son tour en utilisant la méthode attaquer()
             mage.attaquer(chevalier);
-            // Mise à jour des statistiques dans le tableau
+            // Mise à jour des statistiques dans le tableau en donnant la position [] dans le tableau des valeurs.
             statistiques[0][0] = chevalier.getPointsDeVie();
             statistiques[0][1] = chevalier.getNombreDeMorts();
             statistiques[1][0] = mage.getPointsDeVie();
@@ -115,6 +117,7 @@ public class JeuDeCombat {
         // Affichage des statistiques finales
         System.out.println("Information reçue par le tableau");
         System.out.println("Statistiques finales :");
+        // On affiche les valeurs du tableau en précisant la position de la valeur souhaitée.
         System.out.println("Chevalier: Points de vie : " + statistiques[0][0] + ", Nombre de morts : " + statistiques[0][1]);
         System.out.println("Mage: Points de vie : " + statistiques[1][0] + ", Nombre de morts : " + statistiques[1][1]);
 

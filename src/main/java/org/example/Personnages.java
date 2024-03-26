@@ -111,10 +111,6 @@ public abstract class Personnages {
     // Force du personnage
     protected int force;
 
-    public int getNombreDeMorts() {
-        return nombreDeMorts;
-    }
-
     public void setNombreDeMorts(int nombreDeMorts) {
         this.nombreDeMorts = nombreDeMorts;
     }
@@ -131,10 +127,8 @@ public abstract class Personnages {
          Ce qui est entre parenthèses sont les paramètres du constructeur.
          */
         this.nom = nom;                      // 'this.nom' fait référence à la variable membre 'nom' de la classe.
-                                             // 'nom' fait référence à l'argument 'nom' du constructeur.
         this.pointsDeVie = pointsDeVie;      // 'this.pointsDeVie' fait référence à la variable membre 'pointsDeVie' de la classe.
-                                             // 'pointsDeVie' fait référence à l'argument 'pointsDeVie' du constructeur.
-        this.force = force;                  // Force du personnage
+        this.force = force;
         this.typeAttaque = typeAttaque;
         this.nombreDeMorts = 0;
     }
@@ -155,48 +149,57 @@ public abstract class Personnages {
     public void setPointsDeVie(int pointsDeVie) {
         this.pointsDeVie = pointsDeVie;
     }
-
+    public int getNombreDeMorts() {
+        return nombreDeMorts;
+    }
     public int getForce() {
         return force;
     }
-
     public void setForce(int force) {
         this.force = force;
     }
+
+
     /* Méthode abstraite à implémenter dans les sous-classes pour attaquer un autre personnage
      Le mot-clé 'abstract' indique que cette méthode n'a pas d'implémentation dans cette classe,
      et qu'elle doit être définie dans les sous-classes.
      */
     public abstract void attaquer(Personnages personnages);
 
-    // Méthode pour recevoir des dégâts, en créant une variable dégats en int
+    /* Méthode pour recevoir des dégâts, en créant une variable dégats qui est un entier (int).
+    Cette méthode utilise VOID, ce qui signifie qu'il n'a pas de valeur en retour.
+    */
     public void recevoirDegats(int degats) {
-        // Réduction des points de vie du personnage
-        // PointsDeVie moins ou égale à degats
-        pointsDeVie -= degats;  // Réduit les points de vie du personnage par la valeur 'degats'.
+        /* Réduction des points de vie du personnage.
+        PointsDeVie moins ou égale à degats.
+        Réduit les points de vie du personnage par la valeur 'degats'.
+        */
+        pointsDeVie -= degats;
 
         // Affiche le nom et les dégats venant du constructeur
         System.out.println(nom + " a reçu " + degats + " dégâts.");
 
         // Si pointsDeVie est plus petit ou égale à 0 alors
         if (pointsDeVie <= 0) {
-            // Assure que les points de vie ne deviennent pas négatifs
+            // On s'assure que les points de vie ne deviennent pas négatifs
             pointsDeVie = 0;
-            // Ajoute +1 à nombreDeMorts
+            // On ajoute +1 à nombreDeMorts
             nombreDeMorts++;
-            // Affiche le nom
-            System.out.println(nom + " est K.O.");
+            // On affiche le nom du perdant
+            System.out.println(getNom() + " est K.O.");
         }
     }
 
     // Méthode pour faire varier la force du personnage aléatoirement
     public void varierForce() {
-        // Appel la méthode Java pour génerer un nombre aléatoire.
+        // On appel la méthode Java pour génerer un nombre aléatoire.
         Random random = new Random();
-        // Variation aléatoire entre -5 et 5
+        // On crée une variable en entier (int) variation qui prend une valeur aléatoire entre -5 et 5.
         int variation = random.nextInt(11) - 5;
+        // On ajoute à force la valeur de variation.
         force += variation;
-        System.out.println(nom + " a maintenant une force de " + force + ".");
+        // On affiche le nom du personnage et sa force résultant du calcul ci-dessus.
+        System.out.println(getNom() + " a maintenant une force de " + force + ".");
     }
     // Méthode pour sauvegarder les scores du Chevalier et du Mage
     public void sauvegarderScore() {
@@ -205,10 +208,11 @@ public abstract class Personnages {
         Dans ce cas, une trace de l'exception est affichée avec e.printStackTrace().
         */
         try {
-            // Définir le chemin du dossier "Scores"
+            // On définit le chemin du dossier "Scores"
             String cheminScores = "Scores";
+            // Path permet de représenter le chemin du répertoire.
             Path score = Paths.get(cheminScores);
-            // Remplacez par le chemin correct
+            // On remplace par le chemin correct
             File dossierScores = score.toFile();
             // Si le dossier n'existe pas alors
             if (!dossierScores.exists()) {
@@ -216,9 +220,11 @@ public abstract class Personnages {
             } // Sinon
             // Obtenir le fichier à partir de l'URL
             File fichier = getFile(dossierScores);
-            // On écrit dans le fichier en sécurisant se que l'on fait dans un try
+            // On écrit dans le fichier en sécurisant ce que l'on fait dans un try.
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(fichier, true))) {
+                // On écrit dans le fichier
                 writer.write("Force après le tour : " + force);
+                // On met à la ligne afin de structurer le fichier pour la lecture.
                 writer.newLine();
             }
             // Affiche un message si la sauvegarde a réussi

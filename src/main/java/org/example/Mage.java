@@ -24,23 +24,25 @@ public class Mage extends Personnages implements Pouvoir {
         System.out.println(nom + " attaque " + personnages.getNom() + " avec une attaque " + typeAttaque + ".");
 
         // Appelle la méthode 'recevoirDegats' de la classe Personnage pour infliger des dégâts à la cible
-        // 'force' est utilisé comme valeur de dégâts pour la cible auquel on ajoute +2 car le Mage est plus fort que le chevalier
+        // 'force' est utilisé comme valeur de dégâts pour la cible auquel on ajoute +2 (pour l'exemple), car le Mage est plus fort que le Chevalier
         personnages.recevoirDegats(force +2);
     }
 
     // Implémentation de la méthode de l'interface Pouvoir pour utiliser le pouvoir du Mage
     @Override
     public void utiliserPouvoir() {
-        // Action spécifique au Mage lors de l'utilisation de son pouvoir
-        // Affiche le nom du Mage et l'action spécifique de son pouvoir
+        /* Action spécifique au Mage lors de l'utilisation de son pouvoir.
+        // On affiche le nom du Mage et l'action spécifique de son pouvoir.
+        */
         System.out.println(getNom() + " lance un sort de soin.");
     }
 
-    // Méthode avec une annotation Sortilege pour représenter une compétence spéciale du Mage
+    // Méthode avec une annotation Sortilege pour représenter une compétence spéciale du Mage.
     @Sortilege(nom = "Boule de feu")
     public void bouleDeFeu() {
-        // Action spécifique au Mage lorsqu'il utilise la boule de feu
-        // Affiche le nom du Mage et l'action spécifique de la boule de feu
+        /* Action spécifique au Mage lorsqu'il utilise la boule de feu.
+         Affiche le nom du Mage et l'action spécifique de la boule de feu.
+        */
         System.out.println(getNom() + " lance une boule de feu !");
     }
 }

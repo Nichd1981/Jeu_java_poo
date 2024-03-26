@@ -8,8 +8,9 @@ package org.example;
 */
 interface Pouvoir {
      /* Méthode à implémenter pour utiliser un pouvoir
-    Dans la signature de la méthode utiliserPouvoir(), le mot-clé void est utilisé pour indiquer que la méthode ne retourne aucune valeur.
-     En d'autres termes, la méthode effectue une action (ou un effet de bord) mais ne renvoie pas de résultat.*/
+        Dans la signature de la méthode utiliserPouvoir(), le mot-clé void est utilisé pour indiquer que la méthode ne retourne aucune valeur.
+        En d'autres termes, la méthode effectue une action (ou un effet de bord) mais ne renvoie pas de résultat.
+     */
     void utiliserPouvoir();
 
     // Méthode par défaut pour afficher un message générique

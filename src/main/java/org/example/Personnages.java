@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 import java.util.Random;
 
 // Définition de la classe abstraite Personnage pour représenter un personnage générique
-public abstract class GestionDesPersonnages {
+public abstract class Personnages {
 
     // Variables membres protégées pour être accessibles dans les sous-classes
     // Le mot-clé 'protected' permet d'accéder à ces variables depuis les sous-classes.
@@ -37,7 +37,7 @@ public abstract class GestionDesPersonnages {
 
 
     // Constructeur de la classe Personnage pour initialiser les variables membres
-    public GestionDesPersonnages(String nom, int pointsDeVie, int force, TypeAttaque typeAttaque) {
+    public Personnages(String nom, int pointsDeVie, int force, TypeAttaque typeAttaque) {
          /* Initialisation des variables membres avec les valeurs passées en paramètres
          Le mot-clé 'this' fait référence à l'objet actuel de la classe.
          Il est utilisé ici pour distinguer la variable membre 'nom' de l'argument 'nom'.
@@ -80,7 +80,7 @@ public abstract class GestionDesPersonnages {
      Le mot-clé 'abstract' indique que cette méthode n'a pas d'implémentation dans cette classe,
      et qu'elle doit être définie dans les sous-classes.
      */
-    public abstract void attaquer(GestionDesPersonnages gestionDesPersonnages);
+    public abstract void attaquer(Personnages personnages);
 
     // Méthode pour recevoir des dégâts, en créant une variable dégats en int
     public void recevoirDegats(int degats) {

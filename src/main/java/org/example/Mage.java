@@ -4,7 +4,7 @@ package org.example;
     Définition de la classe Mage qui hérite de la classe Personnage et implémente l'interface Pouvoir
     extends: C'est un mot-clé utilisé pour indiquer l'héritage. La classe Mage hérite de la classe Personnage.
 */
-public class Mage extends GestionDesPersonnages implements Pouvoir {
+public class Mage extends Personnages implements Pouvoir {
 
     // Constructeur de la classe Mage pour initialiser les variables membres spécifiques au Mage
     public Mage(String nom, int pointsDeVie, int force) {
@@ -18,14 +18,14 @@ public class Mage extends GestionDesPersonnages implements Pouvoir {
 
     // Méthode pour attaquer un autre personnage, implémentée à partir de la classe abstraite Personnage
     @Override
-    public void attaquer(GestionDesPersonnages gestionDesPersonnages) {
+    public void attaquer(Personnages personnages) {
         // Utilisation de la variable membre private pour calculer les dégâts
         // Affiche le nom du Mage, la cible et le type d'attaque
-        System.out.println(nom + " attaque " + gestionDesPersonnages.getNom() + " avec une attaque " + typeAttaque + ".");
+        System.out.println(nom + " attaque " + personnages.getNom() + " avec une attaque " + typeAttaque + ".");
 
         // Appelle la méthode 'recevoirDegats' de la classe Personnage pour infliger des dégâts à la cible
         // 'force' est utilisé comme valeur de dégâts pour la cible auquel on ajoute +2 car le Mage est plus fort que le chevalier
-        gestionDesPersonnages.recevoirDegats(force +2);
+        personnages.recevoirDegats(force +2);
     }
 
     // Implémentation de la méthode de l'interface Pouvoir pour utiliser le pouvoir du Mage

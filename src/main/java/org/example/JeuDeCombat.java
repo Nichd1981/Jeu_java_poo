@@ -73,7 +73,7 @@ public class JeuDeCombat {
         List<Integer> degats = Arrays.asList(10, 15, 20);
         // Utilisation d'un stream pour calculer la somme des dégâts
         System.out.println(STR."Dégâts reçus par le Mage : \{degats.stream().mapToInt(Integer::intValue).sum()}");
-        /* degats.stream() : Convertit la liste degats en un flux (stream) de données.
+        /* degats.stream() : Convertit la liste dégats en un flux (stream) de données.
             .mapToInt(Integer::intValue) : Transforme chaque élément du flux en type int.
             .sum() : Calcule la somme de tous les éléments du flux.
          La valeur résultante de la somme est ensuite affichée avec System.out.println().

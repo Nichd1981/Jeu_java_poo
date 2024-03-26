@@ -8,6 +8,93 @@ import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Random;
+// region Descriptif complet de la reflexion pour la création du code
+/*
+1. Analyse des besoins
+Avant de commencer à coder, il est essentiel de bien comprendre les besoins et les fonctionnalités attendues pour la classe Personnages.
+Lors de la création de la classe Personnages, nous avons cherché à modéliser un personnage générique doté de caractéristiques telles que le nom, les points de vie,
+la force et le type d'attaque.
+Le but était de créer une structure de base à partir de laquelle d'autres types de personnages pourraient être dérivés, en mettant en œuvre des fonctionnalités communes.
+
+Utilisation d'une classe abstraite
+La classe Personnages est définie comme une classe abstraite.
+Une classe abstraite est une classe qui ne peut pas être instanciée directement.
+Elle sert de modèle pour d'autres classes (dites "sous-classes" ou "classes dérivées") qui étendent la classe abstraite en fournissant des implémentations spécifiques
+des méthodes abstraites.
+
+Dans notre cas, la méthode attaquer est définie comme abstraite dans la classe Personnages.
+Cela signifie que chaque sous-classe de Personnages doit fournir sa propre implémentation de la méthode attaquer, adaptée à son type de personnage
+spécifique (par exemple, Chevalier, Mage, etc.).
+
+Variables membres protégées
+Les variables membres de la classe (nom, pointsDeVie, force, typeAttaque, nombreDeMorts) sont déclarées comme protected.
+Cela signifie qu'elles sont accessibles à la fois dans la classe Personnages et dans ses sous-classes.
+Cette encapsulation protégée permet aux sous-classes d'accéder et de modifier ces variables directement, tout en empêchant un accès direct depuis
+l'extérieur de ces classes.
+
+Méthodes Getter et Setter
+Nous avons également implémenté des méthodes getter et setter pour chaque variable membre, afin de permettre une meilleure encapsulation des données.
+Les méthodes getter permettent d'accéder aux valeurs des variables membres, tandis que les méthodes setter permettent de modifier ces valeurs tout
+en contrôlant les modifications possibles (par exemple, en validant les nouvelles valeurs).
+
+Gestion des dégâts et des points de vie
+La méthode recevoirDegats est chargée de gérer les dégâts reçus par un personnage.
+Elle réduit les points de vie du personnage en fonction des dégâts subis et affiche des messages appropriés.
+De plus, elle vérifie si les points de vie atteignent zéro ou moins, auquel cas le personnage est déclaré "K.O." et le compteur nombreDeMorts est incrémenté.
+
+Variation aléatoire de la force
+La méthode varierForce modifie aléatoirement la force d'un personnage, en ajoutant ou en soustrayant une valeur aléatoire entre -5 et 5.
+Cette fonctionnalité ajoute une dimension aléatoire et dynamique aux personnages, ce qui peut rendre le jeu plus intéressant.
+
+Sauvegarde des scores
+Enfin, la méthode sauvegarderScore est chargée de sauvegarder le score du personnage dans un fichier.
+Cette méthode utilise des manipulations de fichiers et des gestionnaires d'exceptions (try-catch) pour assurer une sauvegarde sécurisée des scores.
+Dans cet exemple, nous allons créer une classe abstraite pour représenter un personnage générique, capable de :
+
+Donc on aura besoin:
+
+-Gérer le nom, les points de vie, la force et le type d'attaque d'un personnage.
+-Attaquer un autre personnage.
+-Recevoir des dégâts.
+-Varier la force du personnage de manière aléatoire.
+-Sauvegarder les scores du personnage dans un fichier.
+
+2. Conception de la classe
+Définition des attributs
+La première étape consiste à définir les attributs nécessaires pour la classe. Dans notre cas, nous avons besoin de :
+
+-nom : pour stocker le nom du personnage.
+-pointsDeVie : pour stocker les points de vie du personnage.
+-force : pour stocker la force du personnage.
+-typeAttaque : pour définir le type d'attaque du personnage.
+-nombreDeMorts : pour suivre le nombre de fois où le personnage est mort.
+-Constructeur
+Ensuite, nous avons défini un constructeur pour initialiser ces attributs lors de la création d'un objet Personnages.
+Le constructeur prend en paramètre toutes les valeurs nécessaires pour initialiser un personnage.
+
+Encapsulation
+Pour garantir une bonne encapsulation et protéger l'accès aux attributs de la classe, nous avons créé des méthodes getters et setters pour chaque attribut.
+
+Méthodes abstraites
+La classe contient également une méthode abstraite attaquer, qui doit être implémentée dans les sous-classes.
+Cela permet de définir le comportement spécifique d'attaque pour chaque type de personnage.
+
+3. Implémentation des méthodes
+Méthodes pour recevoir des dégâts et varier la force
+Nous avons ajouté des méthodes recevoirDegats et varierForce pour permettre au personnage de recevoir des dégâts et de varier sa force de manière aléatoire.
+
+Sauvegarde des scores
+Pour sauvegarder les scores du personnage, nous avons implémenté une méthode sauvegarderScore.
+Cette méthode utilise des opérations d'entrée/sortie (IO) pour écrire les scores dans un fichier.
+
+4. Gestion des exceptions
+Nous avons également pris en compte la gestion des exceptions en utilisant des blocs try-catch pour gérer les éventuelles erreurs lors de l'écriture dans
+le fichier ou la création de dossiers.
+
+5. Test et débogage
+Après avoir écrit le code, il est crucial de tester chaque fonctionnalité pour s'assurer qu'elle fonctionne comme prévu et de déboguer tout problème rencontré.
+*/
+// endregion
 
 // Définition de la classe abstraite Personnage pour représenter un personnage générique
 public abstract class Personnages {
